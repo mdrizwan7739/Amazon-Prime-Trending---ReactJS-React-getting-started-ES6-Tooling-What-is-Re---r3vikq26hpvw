@@ -1,7 +1,7 @@
 import React, {Component, useState} from "react";
 import '../styles/App.css';
 
-function App() {
+const App=()=> {
   let [state, setState] = useState(0);
   let [num, newnum] = useState(0);
   return (
