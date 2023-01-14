@@ -11,7 +11,7 @@ const App=()=> {
       <button data-testid="button-prev" disabled={num === 0 ? true : false} onClick={() => { setState(state - 1); newnum(num - 1) }}>Prev</button>
       <button data-testid="button-next" disabled={num === 4 ? true : false} onClick={() => { setState(state + 1); newnum(num + 1) }}>Next</button>
       <button data-testid="button-restart" disabled={num === 0 ? true : false} onClick={() => { setState(0); newnum(0) }}>Restart</button>
-      <h1 data-testid="title">{slides[state].text}</h1>
+      <h1 data-testid="title">{slides[state].title}</h1>
       <p data-testid="text">{slides[state].text}</p>
     </>
   );
