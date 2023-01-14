@@ -1,5 +1,6 @@
 import React, {Component, useState} from "react";
 import '../styles/App.css';
+import slides from '../data.js';
 
 const App=()=> {
   let [state, setState] = useState(0);
