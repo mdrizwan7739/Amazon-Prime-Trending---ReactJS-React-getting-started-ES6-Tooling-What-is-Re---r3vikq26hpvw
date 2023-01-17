@@ -1,22 +1,59 @@
-import React, {Component, useState} from "react";
-import '../styles/App.css';
-import slides from '../data.js';
+import React, { Component, useState } from "react";
+import "../styles/App.css";
 
-const App=()=> {
-  let [state, setState] = useState(0);
-  let [num, newnum] = useState(0);
-  return (
-    <>
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      currentSlide: 0,
+    };
+  }
 
-      <button data-testid="button-prev" disabled={num === 0 ? true : false} onClick={() => { setState(state - 1); newnum(num - 1) }}>Prev</button>
-      <button data-testid="button-next" disabled={num === 4 ? true : false} onClick={() => { setState(state + 1); newnum(num + 1) }}>Next</button>
-      <button data-testid="button-restart" disabled={num === 0 ? true : false} onClick={() => { setState(0); newnum(0) }}>Restart</button>
-      <h1 data-testid="title">{slides[state].title}</h1>
-      <p data-testid="text">{slides[state].text}</p>
-    </>
-  );
-
-
+  render() {
+    return (
+      <>
+        <h1 data-testid="title">
+          {this.props.slides[this.state.currentSlide].title}
+        </h1>
+        <p data-testid="text">
+          {this.props.slides[this.state.currentSlide].text}
+        </p>
+        <button
+          data-testid="button-prev"
+          disabled={this.state.currentSlide === 0}
+          onClick={() => {
+            this.setState({
+              currentSlide: this.state.currentSlide - 1,
+            });
+          }}
+        >
+          Previous
+        </button>
+        <button
+          data-testid="button-next"
+          disabled={this.state.currentSlide === this.props.slides.length - 1}
+          onClick={() => {
+            this.setState({
+              currentSlide: this.state.currentSlide + 1,
+            });
+          }}
+        >
+          Next
+        </button>
+        <button
+          onClick={() => {
+            this.setState({
+              currentSlide: 0,
+            });
+          }}
+          disabled={this.state.currentSlide===0}
+          data-testid="button-restart"
+        >
+          Restart
+        </button>
+      </>
+    );
+  }
 }
 
 export default App;
